@@ -6,5 +6,6 @@ import Propulsion
 import Tube_Wing
 import BWB
 import Human_Powered
+import Fighter_Jet
 import UAV
 import Common
