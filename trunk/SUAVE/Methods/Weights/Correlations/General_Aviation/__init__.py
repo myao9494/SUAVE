@@ -1,4 +1,4 @@
-## @defgroup Methods-Weights-Correlations-General_Aviation Generational
+## @defgroup Methods-Weights-Correlations-General_Aviation General_Aviation
 # Provides structural and component weight correlations for general aviation aircraft
 # @ingroup Methods-Weights-Correlations
 
