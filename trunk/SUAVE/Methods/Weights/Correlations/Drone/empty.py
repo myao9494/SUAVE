@@ -51,20 +51,20 @@ def empty(vehicle):
     """     
 
     # Compute drone payload weight
-    wt_payload    = vehicle.mass_properties.payload 
+    wt_payload    = vehicle.propulsors.network.payload.mass_properties.mass
   
     # Compute drone motor weight weight
-    Kv = propulsors.motor.speed_constant 
+    Kv = vehicle.propulsors.network.motor.speed_constant 
     wt_motor       = 10**4.0499*Kv**-0.5329
     
     # Compute drone propeller weight weight
-    num_eng        = propulsors.number_of_engines
-    D              = propulsors.propeller.prop_attributes.tip_radius*2
+    num_eng        = vehicle.propulsors.network.number_of_engines
+    D              = vehicle.propulsors.network.propeller.prop_attributes.tip_radius*2
     wt_propulsion  = num_eng * (0.05555*D**2 + 0.2216*D)
     
     # Compute drone wing weight
-    if vehicle.wings():
-        total_drone_wing_wt  = 0.0        
+    if len(vehicle.wings.keys())==0:
+        total_drone_wt_wing  = 0.0        
     else:
         for wing in vehicle.wings():
             b          = wing.spans.projected
@@ -76,7 +76,7 @@ def empty(vehicle):
     
    
     # Compute drone center body weight      
-    if vehicle.fuselages():
+    if len(vehicle.fuselages.keys())==0:
         wt_center_body = 0.0
     else:
         wt_center_body =  vehicle.fuselages['center_body'].mass_properties.mass
