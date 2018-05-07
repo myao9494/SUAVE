@@ -203,7 +203,7 @@ class Lift_Forward_Propulsor(Propulsor):
         # Run the motor
         motor_lift.omega(konditions)
         # link
-        propeller_lift.inputs.omega =  motor_lift.outputs.omega
+        propeller_lift.inputs.omega = motor_lift.outputs.omega
         propeller_lift.thrust_angle = self.thrust_angle_lift
         
         # Run the propeller
@@ -242,7 +242,7 @@ class Lift_Forward_Propulsor(Propulsor):
         i_lift    = esc_lift.outputs.currentin*num_lift 
         i_forward = esc_forward.outputs.currentin*num_forward
         
-        current_total = i_lift + i_forward + i_avionics_payload
+        current_total = i_forward+ i_forward + i_avionics_payload
         power_total   = current_total * state.unknowns.battery_voltage_under_load  
         
         battery.inputs.current  = current_total
@@ -388,7 +388,7 @@ class Lift_Forward_Propulsor(Propulsor):
         ones = state.ones_row
         
         # Here we are going to unpack the unknowns (Cps,throttle,voltage) provided for this network
-        state.conditions.propulsion.lift_throttle                    = state.unknowns.lift_throttle
+        state.conditions.propulsion.lift_throttle                    = state.unknowns.throttle
         state.conditions.propulsion.battery_voltage_under_load       = state.unknowns.battery_voltage_under_load
         state.conditions.propulsion.propeller_power_coefficient      = 0.0 * ones(1)
         state.conditions.propulsion.propeller_power_coefficient_lift = state.unknowns.propeller_power_coefficient_lift
