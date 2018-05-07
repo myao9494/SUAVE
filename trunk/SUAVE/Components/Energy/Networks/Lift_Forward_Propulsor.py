@@ -242,7 +242,7 @@ class Lift_Forward_Propulsor(Propulsor):
         i_lift    = esc_lift.outputs.currentin*num_lift 
         i_forward = esc_forward.outputs.currentin*num_forward
         
-        current_total = i_forward+ i_forward + i_avionics_payload
+        current_total = i_lift + i_forward + i_avionics_payload
         power_total   = current_total * state.unknowns.battery_voltage_under_load  
         
         battery.inputs.current  = current_total
